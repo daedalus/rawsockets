@@ -116,9 +116,10 @@ def proc_eth_frame(frame):
 def main():
 	proc_raw=True
 	bin_mode=False
+	iface = 'lo'
 
 	sock=socket.socket(socket.AF_PACKET,socket.SOCK_RAW,socket.htons(0x0800))
-	sock.bind(('lo',0))
+	sock.bind(iface,0))
 
 	while True:
 		raw_data,sa_ll = sock.recvfrom(65535)
