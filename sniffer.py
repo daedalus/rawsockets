@@ -32,19 +32,20 @@ def proc_ipv4_packet(args):
 	checksum = fields[7]
 	ip_src   = fields[8]
 	ip_dst   = fields[9]
-
-	#ip_src = payload[12:16]
-	#ip_dst = payload[16:20]
-
+	
 	ip_frame = payload[0:iplen]
 	ip_payload = ip_frame[20:]
 
 	print '[IPv4]: hdr_len: %d, payload_len: %d, id: %d, ip_src: %s, ip_dst: %s, ip_proto: %s, payload: %s' % (dummy_hdrlen,iplen,id_,ipv4_itoa(ip_src),ipv4_itoa(ip_dst),hex(protocol),ip_payload.encode('hex'))
 
-	#a = ip_proto_info(protocol)
-	
-ip_proto_info = {
+	#WIP
+	#l3_proto_info = ip_proto_info(protocol)
+	#short_name = l3_proto_info[protocol]['proto']
+	#l3_proc_func = l3_proto_info[protocol]['disec']
+	#long_name = l3_proto_info[protocol]['desc']
 
+ip_proto_info = {
+#WIP
 }
 
 eth_proto_info = {
@@ -112,7 +113,6 @@ def proc_eth_frame(frame):
 		print "[ETH]: src_mac: %s, dst_mac: %s, eth_type: %s, Name: %s" % (ethmac_itoa(eth_header[0]),ethmac_itoa(eth_header[1]),hex(eth_type),short_name)
 		l2_proc_func((ip_header,payload))
 		
-
 def main():
 	proc_raw=True
 	bin_mode=False
