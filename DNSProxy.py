@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# Author Dario Clavijo 2017
+# GPLv3
+
 import socket
 import struct
 
@@ -36,8 +40,6 @@ def DNS_dissect(data,addr):
 while True:
 	data1, addr1 = sock.recvfrom(1024) # buffer size is 1024 bytes
 
-
-	
 	if len(data1) > 0:
 		DNS_dissect(data1,addr1)
 		sock2.sendto(data1, ("8.8.8.8", 53))
@@ -47,4 +49,3 @@ while True:
 	if len(data2) > 0:
 		DNS_dissect(data2,addr2)
 		sock.sendto(data2,addr1)
-	
