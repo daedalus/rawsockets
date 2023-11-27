@@ -7,12 +7,10 @@ import struct
 
 def ethmac_itoa(s):
 	s = s.encode('hex')
-	r = ":".join([s[i:i+2] for i in range(0, len(s), 2)])
-	return r
+	return ":".join([s[i:i+2] for i in range(0, len(s), 2)])
 
 def ipv4_itoa(s):
-	r = "%d.%d.%d.%d" % (ord(s[0]),ord(s[1]),ord(s[2]),ord(s[3]))
- 	return r
+	return "%d.%d.%d.%d" % (ord(s[0]),ord(s[1]),ord(s[2]),ord(s[3]))
 
 def proc_l3_proto(args):
 	print args
